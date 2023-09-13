@@ -26,4 +26,9 @@ public record Car(Integer id, String make, String model, String colour, Integer 
         return colour;
     }
 
+    public String getMake() {
+        return make;
+    }
+
+
 }

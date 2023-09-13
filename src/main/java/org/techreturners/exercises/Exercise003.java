@@ -6,6 +6,8 @@ import org.techreturners.mockdata.MockData;
 import java.io.IOException;
 import java.util.List;
 
+import static java.util.stream.Collectors.groupingBy;
+
 public class Exercise003 {
 
     public static void main(String[] args) throws IOException {
@@ -20,7 +22,11 @@ public class Exercise003 {
         // Group the results together by their colour and print to the console
 
         List<Car> cars = MockData.getCars();
+        String result = cars.stream()
+                .filter(c -> c.getPrice() < 20000 && c.getYear().equals(1995))
+                .collect(groupingBy(c -> c.getColour())).toString();
 
+        System.out.println(result);
         // write your solution here
 
     }

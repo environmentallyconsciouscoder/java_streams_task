@@ -37,8 +37,5 @@ public class Exercise001 {
         people.stream()
                 .filter(p -> p.getAge() > 30 && p.getFirstName().startsWith("A") && p.getLastName().startsWith("M"))
                 .forEach(System.out::println);
-
-        // write your solution here
-
     }
 }
