@@ -18,6 +18,11 @@ public record Person(Integer id, String firstName, String lastName, String email
         return age;
     }
 
+    public Integer getId() {
+        return id;
+    }
+
+
     public String getFirstName() {
         return firstName;
     }
