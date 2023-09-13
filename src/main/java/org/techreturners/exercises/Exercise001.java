@@ -11,7 +11,7 @@ public class Exercise001 {
 
     public static void main(String[] args) throws Exception {
 
-        filterCars();
+//        filterCars();
         findPerson();
 
     }
@@ -22,8 +22,9 @@ public class Exercise001 {
         // I would like the results printed out to the console
         // I have provided you with the list of cars to find these from below:
         List<Car> cars = MockData.getCars();
-
-        // write your solution here
+        cars.stream()
+                .filter(c -> c.getYear() <= 2001 && c.getPrice() <= 30000 && c.getColour().equals("Green"))
+                .forEach(System.out::println);
     }
 
     public static void findPerson() throws IOException {
@@ -33,6 +34,9 @@ public class Exercise001 {
         // Output your result to the console
 
         List<Person> people = MockData.getPeople();
+        people.stream()
+                .filter(p -> p.getAge() > 30 && p.getFirstName().startsWith("A") && p.getLastName().startsWith("M"))
+                .forEach(System.out::println);
 
         // write your solution here
 

@@ -13,4 +13,17 @@ public record Person(Integer id, String firstName, String lastName, String email
                 ", age=" + age +
                 '}';
     }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
 }
