@@ -22,11 +22,15 @@ public class Exercise003 {
         // Group the results together by their colour and print to the console
 
         List<Car> cars = MockData.getCars();
-        String result = cars.stream()
+        cars.stream()
                 .filter(c -> c.getPrice() < 20000 && c.getYear().equals(1995))
-                .collect(groupingBy(c -> c.getColour())).toString();
+                .collect(groupingBy(Car::colour))
+                .entrySet()
+                .forEach(entry -> {
+                    System.out.println("Color: " + entry.getKey());
+                    entry.getValue().forEach(System.out::println);
+                });
 
-        System.out.println(result);
         // write your solution here
 
     }

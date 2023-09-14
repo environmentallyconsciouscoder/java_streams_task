@@ -6,12 +6,13 @@ import org.techreturners.mockdata.MockData;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Exercise001 {
 
     public static void main(String[] args) throws Exception {
 
-//        filterCars();
+        filterCars();
         findPerson();
 
     }
@@ -23,7 +24,7 @@ public class Exercise001 {
         // I have provided you with the list of cars to find these from below:
         List<Car> cars = MockData.getCars();
         cars.stream()
-                .filter(c -> c.getYear() <= 2001 && c.getPrice() <= 30000 && c.getColour().equals("Green"))
+                .filter(c -> c.getYear() <= 2001 && c.getPrice() <= 30000 && c.getColour().equals("Green")).collect(Collectors.toList())
                 .forEach(System.out::println);
     }
 

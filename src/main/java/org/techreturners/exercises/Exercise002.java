@@ -13,8 +13,8 @@ public class Exercise002 {
 
     public static void main(String[] args) throws IOException {
 
-//        sortPeopleByAge();
-//        sortByCarMakeAndYear();
+        sortPeopleByAge();
+        sortByCarMakeAndYear();
         tenMostExpensiveRedCars();
 
     }
@@ -24,7 +24,7 @@ public class Exercise002 {
         // Please return the results from the lowest to the highest age
 
         List<Person> people = MockData.getPeople();
-        people.stream().sorted(Comparator.comparing(Person::getAge)).forEach(System.out::println);
+        people.stream().sorted(Comparator.comparingInt(Person::getAge)).forEach(System.out::println);
 
     }
 
@@ -36,7 +36,7 @@ public class Exercise002 {
         // Print the results of this to the console
 
         List<Car> cars = MockData.getCars();
-        cars.stream().sorted(Comparator.comparing(Car::getYear)).sorted(Comparator.comparing(Car::getMake)).forEach(System.out::println);
+        cars.stream().sorted(Comparator.comparing(Car::make).thenComparingInt(Car::year)).forEach(System.out::println);
         // write your solution here
     }
 
@@ -47,9 +47,8 @@ public class Exercise002 {
         // Oh, also, it has to be Red!
 
         List<Car> cars = MockData.getCars();
-        cars.stream().sorted(Comparator.comparing(Car::getPrice).reversed()).limit(10).forEach(System.out::println);
-        ;
-        // write your solution here
+        cars.stream().sorted(Comparator.comparing(Car::getPrice).reversed()).filter(car -> car.colour().equals("Red")).limit(10).forEach(System.out::println);
+
 
     }
 }

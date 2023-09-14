@@ -27,14 +27,10 @@ public class Exercise004 {
         // Using streams() API find the average car price (to the nearest whole number) from the list of cars
         // Output the resulting double value to the console
         List<Car> cars = MockData.getCars();
-        OptionalDouble averagePrice = cars.stream()
+        double averagePrice = cars.stream()
                 .mapToDouble(Car::getPrice)
-                .average();
-        System.out.println(averagePrice.getAsDouble());
-
-
-        // write your solution here
-
+                .average().orElse(0.0);
+        System.out.println(Math.round(averagePrice));
     }
 
     public static void dataFilteringAndTransformation() throws IOException {
@@ -44,17 +40,10 @@ public class Exercise004 {
         // Print the result to the console
         List<Person> people = MockData.getPeople();
 
-        List<Person> filteredPeople = people.stream()
+        people.stream()
                 .filter(p -> p.getAge() > 65)
-                .collect(Collectors.toList());
-
-        List<PersonDTO> personDTOS = new ArrayList<>();
-
-        filteredPeople.forEach(p -> {
-            personDTOS.add(new PersonDTO(p.getId(), p.getFirstName(), p.getAge()));
-        });
-
-        personDTOS.forEach(System.out::println);
+                .map(PersonDTO::map)
+                .forEach(System.out::println);
 
         // write your solution here
     }
